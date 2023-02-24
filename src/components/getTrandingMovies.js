@@ -1,4 +1,3 @@
-import React from 'react';
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
 export const getTrandingMovies = async () => {

@@ -16,9 +16,9 @@ const Home = () => {
   const list = movies.map((movie, index) => (
     <li key={movie.id + '-' + index}>
       {' '}
-      <Link to={`movie/${movie.id}`} state={{ from: location }}>
+      <Link to={`movies/${movie.id}`} state={{ from: location }}>
         {' '}
-        {movie.title || movie.name}
+        {movie.title}
       </Link>
     </li>
   ));

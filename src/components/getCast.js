@@ -1,7 +1,7 @@
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
-export const getTrandingMovies = async () => {
-  const link = 'https://api.themoviedb.org/3/trending/movie/week';
+export const getCast = async movieId => {
+  const link = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
 
   try {
     const searchParams = new URLSearchParams({
@@ -15,7 +15,7 @@ export const getTrandingMovies = async () => {
     }
     const data = await response.json();
 
-    return data.results;
+    return data.cast;
   } catch (error) {
     console.error(error);
   }

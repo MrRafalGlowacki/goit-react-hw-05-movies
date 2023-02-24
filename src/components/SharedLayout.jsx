@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
+import css from './SharedLayout.module.css';
 
 export const SharedLayout = () => {
   return (
@@ -8,12 +9,20 @@ export const SharedLayout = () => {
         <ul>
           {' '}
           <li>
-            <NavLink to="/" end>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? css.active : '')}
+            >
               Home
             </NavLink>{' '}
           </li>
           <li>
-            <NavLink to="/movies">Movies</NavLink>
+            <NavLink
+              to="/movies"
+              className={({ isActive }) => (isActive ? css.active : '')}
+            >
+              Movies
+            </NavLink>
           </li>
         </ul>
       </nav>

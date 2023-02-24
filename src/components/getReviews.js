@@ -1,11 +1,13 @@
 const API_KEY = 'b942b8bf626a04f48b07153a95ee51a0';
 
-export const getTrandingMovies = async () => {
-  const link = 'https://api.themoviedb.org/3/trending/movie/week';
+export const getReviews = async movieId => {
+  const link = `https://api.themoviedb.org/3/movie/${movieId}/reviews`;
 
   try {
     const searchParams = new URLSearchParams({
       api_key: API_KEY,
+      language: 'en - US',
+      page: 1,
     });
 
     const url = `${link}?${searchParams}`;

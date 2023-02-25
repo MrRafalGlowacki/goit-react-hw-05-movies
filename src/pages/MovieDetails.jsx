@@ -1,17 +1,18 @@
 import { AdditionalInfo } from 'components/AdditionalInfo';
-import Cast from 'components/Cast';
 import { getMoviesById } from 'components/getMoviesById';
-import Reviews from 'components/Reviews';
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
+
+const Cast = lazy(() => import('components/Cast'));
+const Reviews = lazy(() => import('components/Reviews'));
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
-  console.log(backLinkHref);
+
   const handleGenreList = () => {
     const genresArray = movies.genres;
     const genres = genresArray?.map(genre => ' ' + genre.name);
@@ -35,10 +36,11 @@ const MovieDetails = () => {
     };
     fetchById(id);
   }, [id]);
+
   return (
     <>
       <div className={css.container}>
-        <Link to={backLinkHref}>Back to products</Link>
+        <Link to={backLinkHref}>Back</Link>
         <img
           className={css.poster}
           src={

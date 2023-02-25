@@ -5,6 +5,7 @@ import { getCast } from './getCast';
 export default function Cast() {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
+  
   useEffect(() => {
     const fetchById = async s => {
       const moviesById = await getCast(s);
@@ -12,7 +13,7 @@ export default function Cast() {
     };
     fetchById(id);
   }, [id]);
-  console.log(cast);
+ 
   const credits = cast?.map((actor, index) => (
     <div key={actor.credit_id + '-' + index}>
       <img

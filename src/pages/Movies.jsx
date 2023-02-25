@@ -12,14 +12,11 @@ const Movies = () => {
   const searchValue = searchParams.get('search');
 
   const handleChange = e => {
-    // setSerchParams({ search: e.target.value });
     setSearch(e.target.value);
   };
 
   const handleOnSubmit = async event => {
     event.preventDefault();
-    // const fetchedMovies = await searchMovies(searchValue);
-    // setMovies(fetchedMovies);
     setSerchParams({ search: search });
     setSearch('');
   };

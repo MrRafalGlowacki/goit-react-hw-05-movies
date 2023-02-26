@@ -15,7 +15,11 @@
 }
 .poster {
   display: block;
-  max-width: 75vw;
+  width: 75vw;
+  max-width: 300px;
+}
+.title {
+  max-width: 85vw;
 }
 
 .info {
@@ -34,26 +38,37 @@
   display: flex;
   gap: 3px;
 }
-@media screen and (min-width: 490px) {
+@media screen and (min-width: 678px) {
   .container {
     display: grid;
-    column-gap: 15px;
+    gap: 15px;
     grid-template-columns: 1fr 3fr;
-    /* grid-template-areas:
-      'poster title'
-      'poster score'
-      'poster overwiev'
-      'poster genres'; */
     padding-left: 10px;
   }
-  .poster {
-    /* grid-area: poster; */
+
+  .link {
     grid-column-start: 1;
-
-    grid-column-end: 2;
+    grid-column-end: -1;
     grid-row-start: 1;
-    grid-row-end: 4;
-
+    grid-row-end: 1;
+  }
+  .poster {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
     width: 250px;
+  }
+  .title {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+  .info {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 5;
   }
 }

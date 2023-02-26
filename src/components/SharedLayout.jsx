@@ -5,7 +5,7 @@ import css from './SharedLayout.module.css';
 export const SharedLayout = () => {
   return (
     <div>
-      <nav >
+      <nav>
         <ul className={css.navigation}>
           {' '}
           <li className={css.link}>
@@ -26,10 +26,11 @@ export const SharedLayout = () => {
           </li>
         </ul>
       </nav>
-
-      <Suspense fallback={<div>Loading page...</div>}>
-        <Outlet />
-      </Suspense>
+      <div className={css.container}>
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
+      </div>
     </div>
   );
 };

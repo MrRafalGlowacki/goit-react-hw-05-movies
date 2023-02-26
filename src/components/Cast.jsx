@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from './getCast';
+import css from './Cast.module.css';
 
 export default function Cast() {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
-  
+
   useEffect(() => {
     const fetchById = async s => {
       const moviesById = await getCast(s);
@@ -13,11 +14,10 @@ export default function Cast() {
     };
     fetchById(id);
   }, [id]);
- 
+
   const credits = cast?.map((actor, index) => (
     <div key={actor.credit_id + '-' + index}>
-      <img
-        width={200}
+      <img className={css.actor}
         src={
           actor.profile_path
             ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
@@ -34,5 +34,5 @@ export default function Cast() {
       </div>
     </div>
   ));
-  return <div>{credits}</div>;
+  return <div className={css.container}>{credits}</div>;
 }

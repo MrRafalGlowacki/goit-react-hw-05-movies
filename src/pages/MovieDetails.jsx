@@ -40,7 +40,9 @@ const MovieDetails = () => {
   return (
     <>
       <div className={css.container}>
-        <Link to={backLinkHref}>Back</Link>
+        <Link className={css.link} to={backLinkHref}>
+          Back
+        </Link>
         <img
           className={css.poster}
           src={
@@ -58,12 +60,12 @@ const MovieDetails = () => {
             <h4>User Score:</h4>
             <p>{handleScore() + '%'}</p>
           </div>
-          <div>
-            <h4 className={css.overwiev}>Overwiev</h4>
+          <div className={css.overwiev}>
+            <h4>Overwiev</h4>
             <p>{movies.overview}</p>
           </div>
-          <div>
-            <h4 className={css.genres}>genres:</h4>
+          <div className={css.genres}>
+            <h4>genres:</h4>
             <p>{handleGenreList()}</p>
           </div>
         </div>

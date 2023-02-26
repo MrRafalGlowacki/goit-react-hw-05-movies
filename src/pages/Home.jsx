@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTrandingMovies } from 'components/getTrandingMovies';
 import { Link, useLocation } from 'react-router-dom';
+import css from './Home.module.css'
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,10 +24,10 @@ const Home = () => {
     </li>
   ));
   return (
-    <>
-      <h1>Trending this week</h1>
-      <ul>{list}</ul>
-    </>
+    <div className={css.container}>
+      <h1 className={css.title}>Trending this week</h1>
+      <ul className={css.list}>{list}</ul>
+    </div>
   );
 };
 export default Home;

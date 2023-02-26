@@ -1,6 +1,7 @@
 import { searchMovies } from 'components/searchMovies';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const location = useLocation();
@@ -39,8 +40,9 @@ const Movies = () => {
   ));
   return (
     <>
-      <form onSubmit={handleOnSubmit}>
+      <form className={css.form} onSubmit={handleOnSubmit}>
         <input
+          className={css.input}
           type="text"
           value={search}
           autoComplete="off"
@@ -48,9 +50,11 @@ const Movies = () => {
           onChange={handleChange}
           placeholder="search..."
         ></input>
-        <button type="submit">Search</button>
+        <button className={css.btn} type="submit">
+          Search
+        </button>
       </form>
-      {list}
+      <ul className={css.list}>{list}</ul>
     </>
   );
 };

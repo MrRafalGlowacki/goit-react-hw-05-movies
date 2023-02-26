@@ -5,10 +5,10 @@ import css from './SharedLayout.module.css';
 export const SharedLayout = () => {
   return (
     <div>
-      <nav>
-        <ul>
+      <nav >
+        <ul className={css.navigation}>
           {' '}
-          <li>
+          <li className={css.link}>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? css.active : '')}
@@ -16,7 +16,7 @@ export const SharedLayout = () => {
               Home
             </NavLink>{' '}
           </li>
-          <li>
+          <li className={css.link}>
             <NavLink
               to="/movies"
               className={({ isActive }) => (isActive ? css.active : '')}

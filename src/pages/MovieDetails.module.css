@@ -5,24 +5,55 @@
 
 .container {
   display: grid;
-  column-gap: 15px;
-  grid-template-columns: 1fr 3fr;
-  /* grid-template-areas:
-    'poster title'
-    'poster score'
-    'poster overwiev'
-    'poster genres'; */
-  padding-left: 10px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 10px;
+}
+.link {
+  padding: 10px;
+  justify-self: flex-start;
 }
 .poster {
-  /* grid-area: poster; */
-  grid-column-start: 1;
-
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 4;
-
-  width: 250px;
+  display: block;
+  max-width: 75vw;
 }
+
 .info {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: left;
+  gap: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.score {
+  display: flex;
+  gap: 3px;
+}
+.genres {
+  display: flex;
+  gap: 3px;
+}
+@media screen and (min-width: 490px) {
+  .container {
+    display: grid;
+    column-gap: 15px;
+    grid-template-columns: 1fr 3fr;
+    /* grid-template-areas:
+      'poster title'
+      'poster score'
+      'poster overwiev'
+      'poster genres'; */
+    padding-left: 10px;
+  }
+  .poster {
+    /* grid-area: poster; */
+    grid-column-start: 1;
+
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+
+    width: 250px;
+  }
 }

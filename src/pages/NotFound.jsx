@@ -5,9 +5,9 @@ const NotFound = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      navigate("/");
+      navigate('/');
     }, 1000);
   });
-  return <h1>404 dziadu!</h1>;
+  return <h1>{'404 :('}</h1>;
 };
 export default NotFound;

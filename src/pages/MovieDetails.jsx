@@ -2,7 +2,14 @@ import { AdditionalInfo } from 'components/AdditionalInfo';
 import { getMoviesById } from 'components/getMoviesById';
 import { Loader } from 'components/Loader/Loader';
 import React, { lazy, useEffect, useState } from 'react';
-import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 const Cast = lazy(() => import('components/Cast'));
@@ -13,7 +20,8 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref = '/';
+  const navigate = useNavigate();
 
   const handleGenreList = () => {
     const genresArray = movies.genres;
@@ -45,7 +53,11 @@ const MovieDetails = () => {
     (isLoading && <Loader />) || (
       <>
         <div className={css.container}>
-          <Link className={css.link} to={backLinkHref}>
+          <Link
+            className={css.link}
+            to={backLinkHref}
+            onClick={() => navigate(-1)}
+          >
             Back
           </Link>
           <img

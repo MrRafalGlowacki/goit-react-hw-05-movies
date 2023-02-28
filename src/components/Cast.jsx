@@ -4,7 +4,7 @@ import { getCast } from './getCast';
 import css from './Cast.module.css';
 import { Loader } from './Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,3 +43,5 @@ export const Cast = () => {
     (isLoading && <Loader />) || <div className={css.container}>{credits}</div>
   );
 };
+
+export default Cast;

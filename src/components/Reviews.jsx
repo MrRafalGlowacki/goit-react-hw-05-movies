@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from './getReviews';
 import { Loader } from './Loader/Loader';
-
-export const Reviews = () => {
+const Reviews = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
@@ -27,3 +26,5 @@ export const Reviews = () => {
   ));
   return (isLoading && <Loader />) || <div>{movieReviews}</div>;
 };
+
+export default Reviews;

@@ -15,15 +15,19 @@ const Reviews = () => {
     };
     fetchById(id);
   }, [id]);
-
-  const movieReviews = reviews?.map((review, index) => (
-    <div key={review.id + '-' + index}>
-      <div>
-        <h4>{review.author}</h4>
-        <p>{review.content}</p>
-      </div>
-    </div>
-  ));
+  const movieReviews =
+    reviews.length > 0 ? (
+      reviews?.map((review, index) => (
+        <div key={review.id + '-' + index}>
+          <div>
+            <h4>{review.author}</h4>
+            <p>{review.content}</p>
+          </div>
+        </div>
+      ))
+    ) : (
+      <div>there is no reviews</div>
+    );
   return (isLoading && <Loader />) || <div>{movieReviews}</div>;
 };
 

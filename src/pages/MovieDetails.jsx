@@ -2,14 +2,7 @@ import { AdditionalInfo } from 'components/AdditionalInfo';
 import { getMoviesById } from 'components/getMoviesById';
 import { Loader } from 'components/Loader/Loader';
 import React, { lazy, useEffect, useState } from 'react';
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 const Cast = lazy(() => import('components/Cast'));
@@ -20,8 +13,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  const backLinkHref = '/';
-  const navigate = useNavigate();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   const handleGenreList = () => {
     const genresArray = movies.genres;
@@ -48,16 +40,11 @@ const MovieDetails = () => {
     };
     fetchById(id);
   }, [id]);
-
   return (
     (isLoading && <Loader />) || (
       <>
         <div className={css.container}>
-          <Link
-            className={css.link}
-            to={backLinkHref}
-            onClick={() => navigate(-1)}
-          >
+          <Link className={css.link} to={backLinkHref}>
             Back
           </Link>
           <img
@@ -87,7 +74,7 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
-        <AdditionalInfo />
+        <AdditionalInfo state={location.state} />
         <Routes>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
@@ -96,4 +83,5 @@ const MovieDetails = () => {
     )
   );
 };
+
 export default MovieDetails;

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from './getReviews';
+import { Loader } from './Loader/Loader';
 
-export default function Reviews() {
- 
+export const Reviews = () => {
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     const fetchById = async s => {
+      setIsLoading(true);
       const moviesById = await getReviews(s);
       setReviews(moviesById);
+      setIsLoading(false);
     };
     fetchById(id);
   }, [id]);
@@ -22,5 +25,5 @@ export default function Reviews() {
       </div>
     </div>
   ));
-  return <div>{movieReviews}</div>;
-}
+  return (isLoading && <Loader />) || <div>{movieReviews}</div>;
+};

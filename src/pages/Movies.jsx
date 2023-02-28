@@ -1,3 +1,4 @@
+import { Loader } from 'components/Loader/Loader';
 import { searchMovies } from 'components/searchMovies';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
@@ -8,6 +9,7 @@ const Movies = () => {
   const [searchParams, setSerchParams] = useSearchParams({
     search: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
   const searchValue = searchParams.get('search');
@@ -23,8 +25,10 @@ const Movies = () => {
   };
   useEffect(() => {
     const fetchMovies = async () => {
+      setIsLoading(true);
       const fetchedMovies = await searchMovies(searchValue);
       setMovies(fetchedMovies);
+      setIsLoading(false);
     };
     fetchMovies();
   }, [searchValue]);
@@ -54,7 +58,7 @@ const Movies = () => {
           Search
         </button>
       </form>
-      <ul className={css.list}>{list}</ul>
+      <ul className={css.list}>{(isLoading && <Loader />) || list}</ul>
     </>
   );
 };
